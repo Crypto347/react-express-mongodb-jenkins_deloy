@@ -19,10 +19,12 @@ pipeline {
         stage('Deploy Services') {
             steps {
                 script {
-                    sh 'docker-compose up -d' // Chạy các container
+                    echo 'Starting Docker Compose with specified file'
+                    sh 'docker-compose -f compose.yaml up -d'
                 }
             }
-        }
+}
+
 
         stage('Verify Deployment') {
             steps {
